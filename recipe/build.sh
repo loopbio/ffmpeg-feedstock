@@ -16,7 +16,8 @@ unset SUBDIR
         --enable-version3 \
         --enable-hardcoded-tables \
         --enable-avresample \
-        --enable-libx264
+        --enable-libx264 \
+        --enable-libfreetype
 
 make
 make install
