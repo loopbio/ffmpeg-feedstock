@@ -1,4 +1,4 @@
-{% set version = "3.2.4" %}
+{% set version = "3.3.3" %}
 
 package:
   name: ffmpeg
@@ -7,18 +7,18 @@ package:
 source:
   fn: ffmpeg-{{ version }}.tar.gz  # [not win]
   url: https://ffmpeg.org/releases/ffmpeg-{{ version }}.tar.gz  # [not win]
-  sha256: 2838c37bd35dba6e9b08ebe4e6c11dedbe2d9909583e3c2b9e7a1ad3ce2a9607  # [not win]
+  sha256: 66000646f487496bc33cf0ab72ca1cd4c8bd52f295c45428ed69735925a2bf3c  # [not win]
 
   fn: ffmpeg-{{ version }}-win32-shared.zip  # [win32]
   url: https://ffmpeg.zeranoe.com/builds/win32/shared/ffmpeg-{{ version }}-win32-shared.zip  # [win32]
-  sha256: c62a6e2237097cedbfd6b2e122f6650baf468d1bb4e9f73105126bf2a44b2329  # [win32]
+  sha256: 556c4520dfd2189b8b74ca8409f97ab74978bcba8f9402552f4b8845a4917b33  # [win32]
 
   fn: ffmpeg-{{ version }}-win64-shared.zip  # [win64]
   url: https://ffmpeg.zeranoe.com/builds/win64/shared/ffmpeg-{{ version }}-win64-shared.zip  # [win64]
-  sha256: 31dab0e45aa2808fc422927eca5d49761985d1471b7122aadc6f85deb7bf6a7f  # [win64]
+  sha256: 7bd11db97d8b26e5593af9686fe35af77a7e65bb35dedd2cc0d2ddc7ea6485b7  # [win64]
 
 build:
-  number: 1
+  number: 0
 
 requirements:
   build:
@@ -68,9 +68,11 @@ about:
   summary: Cross-platform solution to record, convert and stream audio and video.
 
 extra:
-  recipe-maintainers:
+  original-recipe-maintainers:
     - danielballan
     - jakirkham
     - 183amir
     - caspervdw
     - patricksnape
+  recipe-maintainers:
+    - sdvillal
