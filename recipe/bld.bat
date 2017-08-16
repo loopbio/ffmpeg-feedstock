@@ -2,11 +2,13 @@
 
 set FFMPEG_FN=ffmpeg-%PKG_VERSION%-win%ARCH%
 
+https://ffmpeg.zeranoe.com/builds/win32/dev/ffmpeg-3.3.3-win32-dev.zip
+
 rem On a version update, change the following SHA256 hashes (win32 and win64)
 if %ARCH% == 32 (
-    set FFMPEG_SHA256="SHA256(%FFMPEG_FN%-dev.zip)= 30e47528f8d16b4365ccbe76dc8ccfa145930064e7a496495a3e805d225b5801"
+    set FFMPEG_SHA256="SHA256(%FFMPEG_FN%-dev.zip)= d586af0c40059d6e1c143d8f1d37d26ffaa38dd729669b3985f3c6ad9f5d52c1"
 ) else (
-    set FFMPEG_SHA256="SHA256(%FFMPEG_FN%-dev.zip)= 3486b694cf92b1480c53609cc3695b5f0b53cbc7c1894170fe60575b707fd300"
+    set FFMPEG_SHA256="SHA256(%FFMPEG_FN%-dev.zip)= bd5dd12b50530c9922442082543c1095b04eb092c9eb69fc5fd04c6f27310dbe"
 )
 
 rem Download the source and check the SHA256
