@@ -14,9 +14,9 @@ Summary: Cross-platform solution to record, convert and stream audio and video.
 Current build status
 ====================
 
-Linux: [![Circle CI](https://circleci.com/gh/loopbio/ffmpeg-feedstock.svg?style=shield)](https://circleci.com/gh/loopbio/ffmpeg-feedstock)
-OSX: [![TravisCI](https://travis-ci.org/loopbio/ffmpeg-feedstock.svg?branch=master)](https://travis-ci.org/loopbio/ffmpeg-feedstock)
-Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/loopbio/ffmpeg-feedstock?svg=True)](https://ci.appveyor.com/project/loopbio/ffmpeg-feedstock/branch/master)
+Linux: [![Circle CI](https://circleci.com/gh/loopbio/ffmpeg-nogpl-feedstock.svg?style=shield)](https://circleci.com/gh/loopbio/ffmpeg-nogpl-feedstock)
+OSX: [![TravisCI](https://travis-ci.org/loopbio/ffmpeg-nogpl-feedstock.svg?branch=master)](https://travis-ci.org/loopbio/ffmpeg-nogpl-feedstock)
+Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/loopbio/ffmpeg-nogpl-feedstock?svg=True)](https://ci.appveyor.com/project/loopbio/ffmpeg-nogpl-feedstock/branch/master)
 
 Current release info
 ====================
