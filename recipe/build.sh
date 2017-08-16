@@ -12,11 +12,9 @@ unset SUBDIR
         --extra-cxxflags=="-Wall -g -m64 -pipe -O3 -march=x86-64 -fPIC" \
         --extra-libs="`pkg-config --libs zlib`" \
         --enable-pic \
-        --enable-gpl \
         --enable-version3 \
         --enable-hardcoded-tables \
-        --enable-avresample \
-        --enable-libx264
+        --enable-avresample
 
 make
 make install

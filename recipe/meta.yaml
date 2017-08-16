@@ -28,7 +28,6 @@ requirements:
     - yasm         # [not win]
     - bzip2 1.0.*  # [not win]
     - libiconv     # [not win]
-    - x264         # [not win]
     - zlib 1.2.*   # [not win]
 #    - freetype     # [not win]
     - 7za          # [win]
@@ -38,7 +37,6 @@ requirements:
 #    - freetype     # [not win]
     - bzip2 1.0.*  # [not win]
     - libiconv     # [not win]
-    - x264         # [not win]
     - zlib 1.2.*   # [not win]
 
 test:
