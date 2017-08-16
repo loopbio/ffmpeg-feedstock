@@ -50,7 +50,6 @@ test:
         "avcodec",
         "avdevice",
         "swresample",
-        "postproc",
         "avfilter",
         "swresample",
         "avcodec",
