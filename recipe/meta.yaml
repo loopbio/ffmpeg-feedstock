@@ -95,6 +95,8 @@ about:
 
 extra:
   recipe-maintainers:
+    - sdvillal
+  conda-forge-recipe-maintainers:
     - danielballan
     - jakirkham
     - 183amir
