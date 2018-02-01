@@ -1,3 +1,20 @@
+#
+# Modified from conda-forge ffmpeg recipe. Changes:
+#   - Enables freetype support (drawtext filter)
+#   - We use GPL 3 (we are using GPL3, see build.sh --enable-version-3)
+#
+# Also interesting, recipe in defaults:
+#   https://github.com/AnacondaRecipes/ffmpeg-feedstock
+#
+# See also:
+#   https://trac.ffmpeg.org/wiki/CompilationGuide#PerformanceTips
+#   https://www.ffmpeg.org/legal.html
+#
+#
+
+# Before bumping the ffmpeg version, understand ABI changes:
+#   https://abi-laboratory.pro/tracker/timeline/ffmpeg/
+
 {% set version = "3.4.1" %}
 {% set build_number= "0" %}
 
