@@ -32,7 +32,7 @@ source:
 
 build:
   number: {{ build_number }}
-  string: gpl_{{ build_number }}
+  string: lgpl_{{ build_number }}
 
 requirements:
   build:
@@ -43,7 +43,6 @@ requirements:
     - bzip2 1.0.*  # [not win]
     - freetype 2.8.1     # [not win]
     - libiconv 1.15     # [not win]
-    - x264         # [not win]
     - zlib 1.2.11   # [not win]
     - gnutls       # [not win]
     - 7za          # [win]
@@ -53,7 +52,6 @@ requirements:
     - bzip2 1.0.*  # [not win]
     - freetype 2.8.1     # [not win]
     - libiconv 1.15     # [not win]
-    - x264         # [not win]
     - zlib 1.2.11   # [not win]
     - gnutls       # [not win]
 
@@ -67,7 +65,6 @@ test:
         "avcodec",
         "avdevice",
         "swresample",
-        "postproc",
         "avfilter",
         "swresample",
         "avcodec",
@@ -84,8 +81,8 @@ test:
 
 about:
   home: http://www.ffmpeg.org/
-  license: GPL 3
-  license_file: COPYING.GPLv3  # [unix]
+  license: LGPL 3
+  license_file: COPYING.LGPLv3  # [unix]
   summary: Cross-platform solution to record, convert and stream audio and video.
 
 extra:
