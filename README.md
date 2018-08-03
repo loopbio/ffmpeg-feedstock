@@ -14,14 +14,16 @@ Summary: Cross-platform solution to record, convert and stream audio and video.
 Current build status
 ====================
 
-Linux: [![Circle CI](https://circleci.com/gh/loopbio/ffmpeg-feedstock.svg?style=shield)](https://circleci.com/gh/loopbio/ffmpeg-feedstock)
-OSX: [![TravisCI](https://travis-ci.org/loopbio/ffmpeg-feedstock.svg?branch=master)](https://travis-ci.org/loopbio/ffmpeg-feedstock)
-Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/loopbio/ffmpeg-feedstock?svg=True)](https://ci.appveyor.com/project/loopbio/ffmpeg-feedstock/branch/master)
+[![Linux](https://img.shields.io/circleci/project/github/loopbio/ffmpeg-feedstock/master.svg?label=Linux)](https://circleci.com/gh/loopbio/ffmpeg-feedstock)
+[![OSX](https://img.shields.io/travis/loopbio/ffmpeg-feedstock/master.svg?label=macOS)](https://travis-ci.org/loopbio/ffmpeg-feedstock)
+[![Windows](https://img.shields.io/appveyor/ci/loopbio/ffmpeg-feedstock/master.svg?label=Windows)](https://ci.appveyor.com/project/loopbio/ffmpeg-feedstock/branch/master)
 
 Current release info
 ====================
-Version: [![Anaconda-Server Badge](https://anaconda.org/loopbio/ffmpeg/badges/version.svg)](https://anaconda.org/loopbio/ffmpeg)
-Downloads: [![Anaconda-Server Badge](https://anaconda.org/loopbio/ffmpeg/badges/downloads.svg)](https://anaconda.org/loopbio/ffmpeg)
+
+| Name | Downloads | Version | Platforms |
+| --- | --- | --- | --- |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-ffmpeg-green.svg)](https://anaconda.org/loopbio/ffmpeg) | [![Conda Downloads](https://img.shields.io/conda/dn/loopbio/ffmpeg.svg)](https://anaconda.org/loopbio/ffmpeg) | [![Conda Version](https://img.shields.io/conda/vn/loopbio/ffmpeg.svg)](https://anaconda.org/loopbio/ffmpeg) | [![Conda Platforms](https://img.shields.io/conda/pn/loopbio/ffmpeg.svg)](https://anaconda.org/loopbio/ffmpeg) |
 
 Installing ffmpeg
 =================
