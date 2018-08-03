@@ -11,7 +11,7 @@
 #   https://abi-laboratory.pro/tracker/timeline/ffmpeg/
 
 {% set version = "3.4.2" %}
-{% set build_number= "0" %}
+{% set build_number= "1" %}
 
 package:
   name: ffmpeg
@@ -44,7 +44,7 @@ requirements:
     - freetype 2.8.1     # [not win]
     - libiconv 1.15     # [not win]
     - zlib 1.2.11   # [not win]
-    - gnutls       # [not win]
+    - gnutls 3.5.*  # [not win]
     - 7za          # [win]
     - curl >=7.44.0,<8         # [win]
     - openssl      # [win]
@@ -53,7 +53,7 @@ requirements:
     - freetype 2.8.1     # [not win]
     - libiconv 1.15     # [not win]
     - zlib 1.2.11   # [not win]
-    - gnutls       # [not win]
+    - gnutls 3.5.*  # [not win]
 
 test:
   commands:

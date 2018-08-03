@@ -16,6 +16,7 @@ unset SUBDIR
         --enable-hardcoded-tables \
         --enable-avresample \
         --enable-libfreetype \
+        --disable-openssl \
         --enable-gnutls
 
 make
