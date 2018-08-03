@@ -1,5 +1,5 @@
 {% set version = "3.3.3" %}
-{% set build_number= "0" %}
+{% set build_number= "1" %}
 
 package:
   name: ffmpeg
@@ -29,8 +29,8 @@ requirements:
     - libtool      # [not win]
     - yasm         # [not win]
     - bzip2 1.0.*  # [not win]
-    - libiconv     # [not win]
-    - x264         # [not win]
+    - libiconv 1.15   # [not win]
+    - x264 1!152.*         # [not win]
     - zlib 1.2.*   # [not win]
 #    - freetype     # [not win]
     - 7za          # [win]
@@ -39,8 +39,8 @@ requirements:
   run:
 #    - freetype     # [not win]
     - bzip2 1.0.*  # [not win]
-    - libiconv     # [not win]
-    - x264         # [not win]
+    - libiconv 1.15     # [not win]
+    - x264 1!152.*         # [not win]
     - zlib 1.2.*   # [not win]
 
 test:
