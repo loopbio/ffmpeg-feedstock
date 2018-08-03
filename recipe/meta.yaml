@@ -1,61 +1,94 @@
+#
+# Modified from conda-forge ffmpeg recipe. Changes:
+#   - Only build for linux
+#   - NVIDIA and (L)GPL made explicit in build string
+#   - Adds x265, libvpx and aom support (find the time to submit these to CF)
+#   - Compiles with dynamic nvidia codec support, see:
+#     https://superuser.com/questions/1299064/error-cuvid-requested-but-not-all-dependencies-are-satisfied-cuda-ffnvcodec
+#     Note the minimum required driver in the  ffnvcodec-headers package description (right now >=396.24)
+#     (a warning of non-compliance is displayed upon installation)
+#   - All pins are given by the dependencies themselves (after modifying all needed packages)
+#   - Adds dev & doc URLs
+#   - Modifies maintainers to make clear this is not the CF package
+#   - Target loopbio channel, remove CF tokens
+#   - Small cosmetic improvements
+#
+# Also interesting, recipe in defaults:
+#   https://github.com/AnacondaRecipes/ffmpeg-feedstock
+#
+# See also:
+#   https://trac.ffmpeg.org/wiki/CompilationGuide#PerformanceTips
+#   https://github.com/FFmpeg/FFmpeg/blob/master/configure
+#   https://www.ffmpeg.org/legal.html
+#
+
+# Before bumping the ffmpeg version, understand ABI changes:
+#   https://abi-laboratory.pro/tracker/timeline/ffmpeg/
+
 {% set version = "4.0.2" %}
+{% set build_number= "0" %}
 
 package:
   name: ffmpeg
   version: {{ version }}
 
 source:
-  fn: ffmpeg-{{ version }}.tar.gz  # [not win]
-  url: https://ffmpeg.org/releases/ffmpeg-{{ version }}.tar.gz  # [not win]
-  sha256: a56ef203c14ffab56b97690a1005522cfa0dc2c42c3c40c33c0bec4875b706eb  # [not win]
-  # This patch is required to fix https://trac.macports.org/ticket/55746
-  # with Xcode < 7.0, where _Nullable attribues are not supported.
-  # Can probably be removed once the compiler infrastructure is updated.
-  patches:  # [osx]
-    - patch-libavcodec-videotoolboxenc.c-drop-Nullable.patch  # [osx]
+  - url: https://ffmpeg.org/releases/ffmpeg-{{ version }}.tar.gz  # [not win]
+    fn: ffmpeg-{{ version }}.tar.gz  # [not win]
+    sha256: a56ef203c14ffab56b97690a1005522cfa0dc2c42c3c40c33c0bec4875b706eb  # [not win]
+    # This patch is required to fix https://trac.macports.org/ticket/55746
+    # with Xcode < 7.0, where _Nullable attribues are not supported.
+    # Can probably be removed once the compiler infrastructure is updated.
+    patches:  # [osx]
+      - patch-libavcodec-videotoolboxenc.c-drop-Nullable.patch  # [osx]
 
-  fn: ffmpeg-{{ version }}-win64-shared.zip  # [win]
-  url: https://ffmpeg.zeranoe.com/builds/win64/shared/ffmpeg-{{ version }}-win64-shared.zip  # [win]
-  sha256: ede566aca8b5348dff85570f9638c6bad33209f9419f79db7bde7daa37599bff  # [win]
+  - url: https://ffmpeg.zeranoe.com/builds/win64/shared/ffmpeg-{{ version }}-win64-shared.zip  # [win]
+    fn: ffmpeg-{{ version }}-win64-shared.zip  # [win]
+    sha256: ede566aca8b5348dff85570f9638c6bad33209f9419f79db7bde7daa37599bff  # [win]
 
 build:
-  number: 0
+  number: {{ build_number }}
+  string: nvidia_gpl_{{ build_number }}
+  skip: True  # [not linux]
   run_exports:
-  # seems to be minor version compatibility
-  # https://abi-laboratory.pro/tracker/timeline/ffmpeg/
+    # seems to be minor version compatibility
+    # https://abi-laboratory.pro/tracker/timeline/ffmpeg/
     - {{ pin_subpackage('ffmpeg', max_pin='x.x') }}
 
 requirements:
   build:
-    - {{ compiler("c") }}
-    - pkg-config  # [not win]
-    - libtool  # [not win]
-    - nasm  # [not win]
-    - 7za  # [win]
-    - curl  # [win]
-    - openssl  # [win]
+    - {{ compiler("c") }}  # [not win]
+    - pkg-config           # [not win]
+    - libtool              # [not win]
+    - nasm                 # [not win]
+    - make                 # [not win]
+    - 7za                  # [win]
+    - curl                 # [win]
+    - openssl              # [win]
   host:
-    - bzip2  # [not win]
-    - freetype  # [not win]
-    - gnutls 3.5.*  # [not win]
-    - libiconv  # [not win]
-    - x264  # [not win]
-    - zlib  # [not win]
-    - openh264 1.7.*  # [not win]
-  run:
-    - bzip2  # [not win]
-    - freetype  # [not win]
-    - gnutls 3.5.*  # [not win]
-    - openh264 1.7.*  # [not win]
+    - zlib                 # [not win]
+    - bzip2                # [not win]
+    - freetype             # [not win]
+    - libiconv             # [not win]
+    - x264                 # [not win]
+    - x265                 # [linux]
+    - aom                  # [linux]
+    - libvpx               # [linux]
+    - openh264             # [not win]
+    - gnutls               # [not win]
+    - ffnvcodec-headers    # [not win]
 
 test:
   commands:
     - ffmpeg --help
-    - ffmpeg -loglevel panic -protocols | grep "https"  # [not win]
     - ffmpeg -loglevel panic -codecs | grep "DEVI.S zlib"  # [unix]
-    - ffmpeg -loglevel panic -codecs | grep "DEV.LS h264"  # [unix]
-    - ffmpeg -loglevel panic -codecs | grep "libx264"  # [unix]
+    - ffmpeg -loglevel panic -codecs | grep "libx264"      # [unix]
     - ffmpeg -loglevel panic -codecs | grep "libopenh264"  # [unix]
+    - ffmpeg -loglevel panic -codecs | grep "h264_cuvid"   # [unix]
+    - ffmpeg -loglevel panic -codecs | grep "h264_nvenc"   # [unix]
+    - ffmpeg -loglevel panic -codecs | grep "libvpx-vp9"   # [unix]
+    - ffmpeg -loglevel panic -codecs | grep "libx265"      # [unix]
+    - ffmpeg -loglevel panic -protocols | grep "https"     # [not win]
     # Verify dynamic libraries on all systems
     {% set ffmpeg_libs = [
         "avcodec",
@@ -74,16 +107,20 @@ test:
     - test -f $PREFIX/lib/lib{{ each_ffmpeg_lib }}.so     # [linux]
     {% endfor %}
     - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
-    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]
+    - conda inspect objects -p $PREFIX $PKG_NAME   # [osx]
 
 about:
   home: http://www.ffmpeg.org/
   license: GPL 3
   license_file: COPYING.GPLv3  # [unix]
   summary: Cross-platform solution to record, convert and stream audio and video.
+  dev_url: https://ffmpeg.org/developer.html
+  doc_url: https://ffmpeg.org/documentation.html
 
 extra:
   recipe-maintainers:
+    - sdvillal
+  conda-forge-recipe-maintainers:
     - danielballan
     - jakirkham
     - 183amir
