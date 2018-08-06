@@ -20,7 +20,7 @@ source:
 
 build:
   number: {{ build_number }}
-  string: gpl_{{ build_number }}
+  string: nocuda_gpl_{{ build_number }}
 
 requirements:
   build:
