@@ -18,7 +18,7 @@ unset SUBDIR
         --extra-cflags="-Wall -g -m64 -pipe -O3 -march=x86-64 -fPIC" \
         --extra-cxxflags="-Wall -g -m64 -pipe -O3 -march=x86-64 -fPIC" \
         --extra-libs="-lpthread -lm -lz" \
-        --enable-gpl \
+        --disable-gpl \
         --enable-version3 \
         --disable-nonfree \
         --enable-postproc \
@@ -27,9 +27,9 @@ unset SUBDIR
         --enable-gnutls \
         --enable-zlib \
         --enable-libfreetype \
-        --enable-libx264 \
+        --disable-libx264 \
         --enable-libopenh264 \
-        --enable-libx265 \
+        --disable-libx265 \
         --enable-libaom \
         --enable-libvpx \
         --disable-cuda \
