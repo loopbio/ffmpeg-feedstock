@@ -48,7 +48,7 @@ source:
 
 build:
   number: {{ build_number }}
-  string: nvidia_gpl_{{ build_number }}
+  string: nonvidia_gpl_{{ build_number }}
   skip: True  # [not linux]
   run_exports:
     # seems to be minor version compatibility
@@ -76,7 +76,6 @@ requirements:
     - libvpx               # [linux]
     - openh264             # [not win]
     - gnutls               # [not win]
-    - ffnvcodec-headers    # [not win]
 
 test:
   commands:
@@ -84,8 +83,6 @@ test:
     - ffmpeg -loglevel panic -codecs | grep "DEVI.S zlib"  # [unix]
     - ffmpeg -loglevel panic -codecs | grep "libx264"      # [unix]
     - ffmpeg -loglevel panic -codecs | grep "libopenh264"  # [unix]
-    - ffmpeg -loglevel panic -codecs | grep "h264_cuvid"   # [unix]
-    - ffmpeg -loglevel panic -codecs | grep "h264_nvenc"   # [unix]
     - ffmpeg -loglevel panic -codecs | grep "libvpx-vp9"   # [unix]
     - ffmpeg -loglevel panic -codecs | grep "libx265"      # [unix]
     - ffmpeg -loglevel panic -protocols | grep "https"     # [not win]

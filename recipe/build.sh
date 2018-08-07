@@ -32,9 +32,9 @@ unset SUBDIR
         --enable-libx265 \
         --enable-libaom \
         --enable-libvpx \
-        --enable-cuda \
-        --enable-cuvid \
-        --enable-nvenc
+        --disable-cuda \
+        --disable-cuvid \
+        --disable-nvenc
 
 make -j${CPU_COUNT}
 make install -j${CPU_COUNT}
