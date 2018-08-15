@@ -78,10 +78,10 @@ requirements:
 test:
   commands:
     - ffmpeg --help
-    - ffmpeg -loglevel panic -codecs | grep "DEVI.S zlib"  # [unix]
-    - ffmpeg -loglevel panic -codecs | grep "libopenh264"  # [unix]
-    - ffmpeg -loglevel panic -codecs | grep "libvpx-vp9"   # [unix]
-    - ffmpeg -loglevel panic -protocols | grep "https"     # [not win]
+    - ffmpeg -hide_banner -codecs | grep "DEVI.S zlib"  # [unix]
+    - ffmpeg -hide_banner -codecs | grep "libopenh264"  # [unix]
+    - ffmpeg -hide_banner -codecs | grep "libvpx-vp9"   # [unix]
+    - ffmpeg -hide_banner -protocols | grep "https"     # [not win]
     # Verify dynamic libraries on all systems
     {% set ffmpeg_libs = [
         "avcodec",
