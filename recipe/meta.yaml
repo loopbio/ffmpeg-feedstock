@@ -26,7 +26,7 @@
 #   https://abi-laboratory.pro/tracker/timeline/ffmpeg/
 
 {% set version = "4.0.2" %}
-{% set build_number= "0" %}
+{% set build_number= "1" %}
 
 package:
   name: ffmpeg
