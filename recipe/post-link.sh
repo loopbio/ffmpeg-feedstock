@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+warn_nvidia()
+{
 # Easily deactivate the script
 NVIDIA=${NVIDIA:-1}
 if [ "${NVIDIA}" -eq "0" ]; then
@@ -65,3 +67,6 @@ if [ ! -z ${MAXIMUM_DRIVER} ]; then
     echo "WARNING: CURRENT NVIDIA DRIVER IS TOO NEW (${CURRENT_NVIDIA_DRIVER} > ${MAXIMUM_DRIVER})"
   fi
 fi
+}
+
+warn_nvidia || true
