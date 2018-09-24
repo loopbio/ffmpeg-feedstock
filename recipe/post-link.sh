@@ -5,14 +5,14 @@ warn_nvidia()
 # Easily deactivate the script
 NVIDIA=${NVIDIA:-1}
 if [ "${NVIDIA}" -eq "0" ]; then
-  exit
+  return 0
 fi
 
 # Find out currently loaded driver
 if [ -f /proc/driver/nvidia/version ]; then
   CURRENT_NVIDIA_DRIVER=`cat /proc/driver/nvidia/version | head -n 1 | awk '{print $8}'`  # Guessed
 else
-  exit
+  return 1
 fi
 
 # Tune these depending on ffmpeg driver requirements
@@ -56,7 +56,7 @@ vercomp () {
 if [ ! -z ${MINIMUM_DRIVER} ]; then
   vercomp ${MINIMUM_DRIVER} ${CURRENT_NVIDIA_DRIVER}
   if [ $? == 1 ]; then
-    echo "WARNING: CURRENT NVIDIA DRIVER IS TOO OLD (${CURRENT_NVIDIA_DRIVER} < ${MINIMUM_DRIVER}="
+    echo "WARNING: CURRENT NVIDIA DRIVER IS TOO OLD (${CURRENT_NVIDIA_DRIVER} < ${MINIMUM_DRIVER})"
   fi
 fi
 
